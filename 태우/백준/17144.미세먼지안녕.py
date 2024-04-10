@@ -35,37 +35,37 @@ def spread() :
 def clean_up() :
     c1 = [0, -1, 0, 1] # 반시계 방향 (동 북 서 남)
     r1 = [1, 0, -1, 0]
-    a = 0
-    b = 0
+    a = 0 #방향 인덱스
+    b = 0 #이전값
     x, y = front, 1
     while 1 :
         nx = x + c1[a]
         ny = y + r1[a]
         if x == front and y == 0 : # 다돌았으면 break
             break
-        if not 0 <= nx < r or not 0 <= ny < c :
+        if not 0 <= nx < r or not 0 <= ny < c : #범위 밖이라면
             a += 1
             continue
-        room[x][y], b = b, room[x][y]
-        x, y = nx, ny
+        room[x][y], b = b, room[x][y] #두 변수 값 바꾸기
+        x, y = nx, ny #다음 위치 이동
 
 # 아래쪽 공기청정기 동작
 def clean_down() :
     c1 = [0, 1, 0, -1] # 시계 방향 (동 남 서 북)
     r1 = [1, 0, -1, 0]
-    a = 0
-    b = 0
+    a = 0 #방향 인덱스
+    b = 0 #이전값
     x, y = back, 1
     while 1 :
         nx = x + c1[a]
         ny = y + r1[a]
         if x == back and y == 0 : # 다돌았으면 break
             break
-        if not 0 <= nx < r or not 0 <= ny < c : 
+        if not 0 <= nx < r or not 0 <= ny < c :  #범위 밖이라면
             a += 1
             continue
-        room[x][y], b = b, room[x][y]
-        x, y = nx, ny
+        room[x][y], b = b, room[x][y] # 두 변수 값 바꾸기
+        x, y = nx, ny #다음 위치 이동
 
 for _ in range(t) :
     spread()
